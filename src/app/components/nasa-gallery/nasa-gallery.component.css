@@ -1,0 +1,21 @@
+.container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .date-picker {
+    margin: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    margin: 20px 0;
+  }
+  
+  .error {
+    color: red;
+    font-weight: bold;
+    margin: 20px 0;
+  }
+  
