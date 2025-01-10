@@ -14,6 +14,7 @@ export class NasaGalleryComponent {
   isLoading: boolean = false;
   errorMessage: string | null = null;
   maxDate: string = '';
+  minDate: string = '1995-06-16';
 
   constructor(private nasaService: NasaService) {}
 
