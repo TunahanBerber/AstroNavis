@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { NasaService } from '../../data/services/nasa.service';
 import { tap, catchError, of, finalize } from 'rxjs';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nasa-gallery',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './nasa-gallery.component.html',
   styleUrl: './nasa-gallery.component.css'
 })
