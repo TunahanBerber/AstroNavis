@@ -1,9 +1,7 @@
-
-
 <!-- Ana İçerik -->
-<div class="container mx-auto p-6 space-y-8">
+<div class="container mx-auto p-6 space-y-8 ">
   <!-- Başlık -->
-  <h1 class="text-4xl font-extrabold text-center text-gray-800">
+  <h1 class="text-4xl font-extrabold text-center text-gray-800 dark:text-white">
     Uzay Fotoğrafları Galerisi
   </h1>
 
@@ -11,7 +9,7 @@
   <div class="date-picker flex flex-col items-center space-y-2">
     <label 
       for="date" 
-      class="text-lg font-semibold text-gray-700"
+      class="text-lg font-semibold text-gray-700 dark:text-gray-300"
     >
       Tarih Seç:
     </label>
@@ -21,14 +19,14 @@
       (change)="onDateChange($event)" 
       [max]="maxDate"
       [min]="minDate"
-      class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+      class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:focus:ring-blue-500"
     />
   </div>
 
   <!-- Yükleniyor Durumu -->
   <div 
     *ngIf="isLoading" 
-    class="text-center text-gray-500 text-lg animate-pulse"
+    class="text-center text-gray-500 text-lg animate-pulse dark:text-gray-400"
   >
     Yükleniyor...
   </div>
@@ -36,7 +34,7 @@
   <!-- Hata Mesajı -->
   <div 
     *ngIf="errorMessage" 
-    class="error bg-red-100 text-red-600 border-l-4 border-red-500 p-4 rounded-md"
+    class="error bg-red-100 text-red-600 border-l-4 border-red-500 p-4 rounded-md dark:bg-red-900 dark:text-red-300 dark:border-red-700"
   >
     <p class="text-md">{{ errorMessage }}</p>
   </div>
@@ -49,19 +47,19 @@
     <img 
       [src]="photo.url" 
       alt="NASA Fotoğrafı" 
-      class="w-full max-w-3xl rounded-lg shadow-lg"
+      class="w-full max-w-3xl rounded-lg shadow-lg dark:shadow-gray-800"
     />
-    <h2 class="text-2xl font-bold text-gray-800">
+    <h2 class="text-2xl font-bold text-gray-800 dark:text-white">
       {{ photo.title }}
     </h2>
-    <p class="text-md text-gray-600 text-center">
+    <p class="text-md text-gray-600 text-center dark:text-gray-300">
       {{ photo.explanation }}
     </p>
   </div>
 
   <!-- Boş Durum Şablonu -->
   <ng-template #noPhoto>
-    <p class="text-center text-lg text-gray-500">
+    <p class="text-center text-lg text-gray-500 dark:text-gray-400">
       Lütfen bir tarih seçin.
     </p>
   </ng-template>

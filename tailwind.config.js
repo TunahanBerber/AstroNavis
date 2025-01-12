@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./src/**/*.{html,ts,css,scss}",
   ],
+  darkMode: 'class',
   safelist: [
     {
       pattern: /^bg-/,
