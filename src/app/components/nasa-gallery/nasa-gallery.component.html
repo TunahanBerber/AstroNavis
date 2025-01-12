@@ -1,83 +1,68 @@
-<div class="hero bg-gradient-to-b from-black to-gray-900 text-white">
-    <div class="container mx-auto text-center py-20">
-      <h1 class="text-5xl font-bold">Kainatın Sırlarına Yolculuk</h1>
-      <p class="mt-4 text-xl">Uzaydan gelen ışık yıllarına dalın ve bilinmeyeni keşfedin.</p>
-      <button class="mt-8 px-6 py-3 bg-blue-600 rounded-lg shadow-lg hover:bg-blue-500 transition">
-        Keşfet
-      </button>
-    </div>
+
+
+<!-- Ana İçerik -->
+<div class="container mx-auto p-6 space-y-8">
+  <!-- Başlık -->
+  <h1 class="text-4xl font-extrabold text-center text-gray-800">
+    Uzay Fotoğrafları Galerisi
+  </h1>
+
+  <!-- Tarih Seçici -->
+  <div class="date-picker flex flex-col items-center space-y-2">
+    <label 
+      for="date" 
+      class="text-lg font-semibold text-gray-700"
+    >
+      Tarih Seç:
+    </label>
+    <input 
+      type="date" 
+      id="date" 
+      (change)="onDateChange($event)" 
+      [max]="maxDate"
+      [min]="minDate"
+      class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
+    />
   </div>
-  
-  
-  <div class="container mx-auto p-6 space-y-8">
-    <!-- Başlık -->
-    <h1 class="text-4xl font-extrabold text-center text-gray-800">
-      Uzay Fotoğrafları Galerisi
-    </h1>
-  
-    <!-- Başarılı Yükleme Mesajı -->
-    <div class="text-center text-2xl font-bold text-blue-500">
-      İşte sizin doğduğunuz gün gökyüzü...
-    </div>
-  
-    <!-- Tarih Seçici -->
-    <div class="date-picker flex flex-col items-center space-y-2">
-      <label 
-        for="date" 
-        class="text-lg font-semibold text-gray-700"
-      >
-        Tarih Seç:
-      </label>
-      <input 
-        type="date" 
-        id="date" 
-        (change)="onDateChange($event)" 
-        [max]="maxDate"
-        [min]="minDate"
-        class="px-4 py-2 border rounded-md shadow-sm focus:outline-none focus:ring focus:ring-blue-300"
-      />
-    </div>
-  
-    <!-- Yükleniyor Durumu -->
-    <div 
-      *ngIf="isLoading" 
-      class="text-center text-gray-500 text-lg animate-pulse"
-    >
-      Yükleniyor...
-    </div>
-  
-    <!-- Hata Mesajı -->
-    <div 
-      *ngIf="errorMessage" 
-      class="error bg-red-100 text-red-600 border-l-4 border-red-500 p-4 rounded-md"
-    >
-      <p class="text-md">{{ errorMessage }}</p>
-    </div>
-  
-    <!-- Fotoğraf Bilgisi -->
-    <div 
-      *ngIf="photo; else noPhoto" 
-      class="photo-info flex flex-col items-center space-y-4"
-    >
-      <img 
-        [src]="photo.url" 
-        alt="NASA Fotoğrafı" 
-        class="w-full max-w-3xl rounded-lg shadow-lg"
-      />
-      <h2 class="text-2xl font-bold text-gray-800">
-        {{ photo.title }}
-      </h2>
-      <p class="text-md text-gray-600 text-center">
-        {{ photo.explanation }}
-      </p>
-    </div>
-  
-    <!-- Boş Durum Şablonu -->
-    <ng-template #noPhoto>
-      <p class="text-center text-lg text-gray-500">
-        Lütfen bir tarih seçin.
-      </p>
-    </ng-template>
+
+  <!-- Yükleniyor Durumu -->
+  <div 
+    *ngIf="isLoading" 
+    class="text-center text-gray-500 text-lg animate-pulse"
+  >
+    Yükleniyor...
   </div>
-  
-  
+
+  <!-- Hata Mesajı -->
+  <div 
+    *ngIf="errorMessage" 
+    class="error bg-red-100 text-red-600 border-l-4 border-red-500 p-4 rounded-md"
+  >
+    <p class="text-md">{{ errorMessage }}</p>
+  </div>
+
+  <!-- Fotoğraf Bilgisi -->
+  <div 
+    *ngIf="photo; else noPhoto" 
+    class="photo-info flex flex-col items-center space-y-4"
+  >
+    <img 
+      [src]="photo.url" 
+      alt="NASA Fotoğrafı" 
+      class="w-full max-w-3xl rounded-lg shadow-lg"
+    />
+    <h2 class="text-2xl font-bold text-gray-800">
+      {{ photo.title }}
+    </h2>
+    <p class="text-md text-gray-600 text-center">
+      {{ photo.explanation }}
+    </p>
+  </div>
+
+  <!-- Boş Durum Şablonu -->
+  <ng-template #noPhoto>
+    <p class="text-center text-lg text-gray-500">
+      Lütfen bir tarih seçin.
+    </p>
+  </ng-template>
+</div>
