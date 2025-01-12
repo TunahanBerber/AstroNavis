@@ -5,21 +5,22 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nasa-gallery',
-  imports: [CommonModule],
   templateUrl: './nasa-gallery.component.html',
-  styleUrl: './nasa-gallery.component.css'
+  styleUrls: ['./nasa-gallery.component.css'],
+  imports: [CommonModule],
 })
 export class NasaGalleryComponent {
-  photo: any = null;
-  isLoading: boolean = false;
-  errorMessage: string | null = null;
-  maxDate: string = '';
-  minDate: string = '1995-06-16';
+  photo: any = null; // Fotoğraf bilgisi
+  isLoading: boolean = false; // Yükleme durumu
+  errorMessage: string | null = null; // Hata mesajı
+  maxDate: string = ''; // Maksimum tarih
+  minDate: string = '1995-06-16'; // Minimum tarih
+  selectedDate: string = ''; // Kullanıcı tarafından seçilen tarih
 
   constructor(private nasaService: NasaService) {}
 
   ngOnInit(): void {
-    this.setMaxDate();
+    this.setMaxDate(); // Maksimum tarihi ayarla
   }
 
   setMaxDate(): void {
@@ -29,9 +30,11 @@ export class NasaGalleryComponent {
 
   onDateChange(event: Event): void {
     const selectedDate = (event.target as HTMLInputElement).value;
-    if (!this.isValidDate(selectedDate)) return;
+    this.selectedDate = selectedDate;
 
-    this.fetchPhoto(selectedDate);
+    if (this.isValidDate(selectedDate)) {
+      this.fetchPhoto(selectedDate); // Fotoğrafı getir
+    }
   }
 
   isValidDate(selectedDate: string): boolean {
@@ -41,7 +44,7 @@ export class NasaGalleryComponent {
     const selected = new Date(selectedDate);
 
     if (selected > today) {
-      alert('Lütfen bugünden sonraki bir tarih seçmeyin.');
+      this.errorMessage = 'Lütfen bugünden sonraki bir tarih seçmeyin.';
       return false;
     }
 
@@ -56,16 +59,23 @@ export class NasaGalleryComponent {
         tap((data) => this.photo = data),
         catchError((error) => {
           console.error('API hatası:', error);
-          this.errorMessage = 'Fotoğraf yüklenirken bir hata oluştu. Lütfen tekrar deneyin.';
-          return of(null); // Hata durumunda boş bir observable döndür
+          if (error.status === 404) {
+            this.errorMessage = 'Bu tarihe ait bir fotoğraf bulunamadı.';
+          } else {
+            this.errorMessage = 'Bir hata oluştu. Lütfen tekrar deneyin.';
+          }
+          return of(null); // Hata durumunda boş veri döndür
         }),
-        finalize(() => this.setLoadingState(false))
+        finalize(() => this.setLoadingState(false)) // Yükleme durumunu kapat
       )
       .subscribe();
   }
 
   setLoadingState(isLoading: boolean): void {
     this.isLoading = isLoading;
-    if (isLoading) this.errorMessage = null; // Yükleme sırasında hatayı temizle
+    if (isLoading) {
+      this.errorMessage = null;
+      this.photo = null; // Yükleme sırasında önceki fotoğrafı temizle
+    }
   }
 }
