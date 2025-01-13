@@ -7,3 +7,18 @@ body.light-theme {
     --background-color: #333;
     --text-color: #fff;
   }
+
+
+  /* .background-img-hero{
+    background-image: url('../../../../assets/img/img-background.jpeg');
+    background-size: cover;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    display: flex; 
+    align-items: center;
+    justify-content: center; 
+    color: white; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    font-family: 'Arial', sans-serif; 
+  }
+   */
