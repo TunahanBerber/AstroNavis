@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { HeroSectionComponent } from './components/hero-section/hero-section.component';
 
 
 
@@ -8,7 +8,7 @@ import { HeroSectionComponent } from './hero-section/hero-section.component';
   declarations: [],
   imports: [
     CommonModule,
-    HeroSectionComponent
+    HeroSectionComponent,
   ],
   exports: [HeroSectionComponent]
 })
