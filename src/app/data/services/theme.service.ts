@@ -10,12 +10,12 @@ export class ThemeService {
     this.currentTheme = theme;
 
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark'); // 'dark' sınıfını ekle
+      document.documentElement.classList.add('dark'); 
     } else {
-      document.documentElement.classList.remove('dark'); // 'dark' sınıfını kaldır
+      document.documentElement.classList.remove('dark'); 
     }
 
-    localStorage.setItem('theme', theme); // Temayı kaydet
+    localStorage.setItem('theme', theme); // Save
   }
 
   getTheme(): 'light' | 'dark' {
@@ -24,7 +24,7 @@ export class ThemeService {
 
   loadTheme() {
     const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const defaultTheme = savedTheme || 'light'; // Varsayılan olarak light
+    const defaultTheme = savedTheme || 'dark';
     this.setTheme(defaultTheme);
   }
 }
