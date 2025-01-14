@@ -1,12 +1,13 @@
 import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeButtonsComponent } from '../theme-buttons/theme-buttons.component';
+import { LogoComponent } from '../logo/logo.component';
 
 @Component({
   selector: 'app-hero-section',
   templateUrl: './hero-section.component.html',
   styleUrls: ['./hero-section.component.css'],
-  imports: [CommonModule,ThemeButtonsComponent]
+  imports: [CommonModule,ThemeButtonsComponent,LogoComponent]
 })
 export class HeroSectionComponent  {
 
