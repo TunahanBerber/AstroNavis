@@ -1,0 +1,22 @@
+
+
+  /* Logo üzerinde animasyon efekti */
+
+  .logo-shine{
+    user-select: none;
+  }
+
+  .logo-shine:hover text {
+    animation: glow 1.5s infinite alternate;
+  }
+
+  /* Işıldama efekti */
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0 0 5px #2196f3) drop-shadow(0 0 10px #2196f3);
+    }
+    100% {
+      filter: drop-shadow(0 0 20px #5900f4) drop-shadow(0 0 40px #9c27b0);
+    }
+  }
+
