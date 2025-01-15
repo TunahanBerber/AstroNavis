@@ -6,7 +6,7 @@ import { ThemeService } from '../../../data/services/theme.service';
   selector: 'app-theme-buttons',
   imports: [CommonModule],
   templateUrl: './theme-buttons.component.html',
-  styleUrl: './theme-buttons.component.css'
+  styleUrls: ['./theme-buttons.component.css'] // Updated from styleUrl to styleUrls
 })
 export class ThemeButtonsComponent implements OnInit {
     constructor(private themeService: ThemeService) {}

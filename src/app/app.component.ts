@@ -8,7 +8,7 @@ import { SharedModule } from './shared/shared.module';
   selector: 'app-root',
   imports: [RouterOutlet, NasaGalleryComponent,HeroSectionComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // Updated from styleUrl to styleUrls
 })
 export class AppComponent {
   title = 'AstroNavis';
