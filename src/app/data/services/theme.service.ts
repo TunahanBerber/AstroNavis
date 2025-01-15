@@ -4,27 +4,33 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ThemeService {
-  private currentTheme: 'light' | 'dark' = 'light';
+  private currentTheme: 'light' | 'dark' = 'dark';
 
-  setTheme(theme: 'light' | 'dark') {
+  constructor() {
+    this.loadTheme();
+  }
+
+  setTheme(theme: 'light' | 'dark'): void {
     this.currentTheme = theme;
 
     if (theme === 'dark') {
-      document.documentElement.classList.add('dark'); 
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
     } else {
-      document.documentElement.classList.remove('dark'); 
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
     }
 
-    localStorage.setItem('theme', theme); // Save
+    localStorage.setItem('theme', theme);
   }
 
   getTheme(): 'light' | 'dark' {
-    return this.currentTheme;
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    return savedTheme || this.currentTheme;
   }
 
-  loadTheme() {
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    const defaultTheme = savedTheme || 'dark';
-    this.setTheme(defaultTheme);
+  loadTheme(): void {
+    const savedTheme = this.getTheme();
+    this.setTheme(savedTheme); // Varsayılan veya kaydedilmiş temayı uygula
   }
 }
