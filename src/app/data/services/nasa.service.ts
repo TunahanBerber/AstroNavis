@@ -6,7 +6,8 @@ import { Observable, forkJoin, map, switchMap, catchError, of } from 'rxjs';
   providedIn: 'root',
 })
 export class NasaService {
-  private baseUrl = 'http://localhost:3002/api/v1/apod';
+  private baseUrl = 'https://astro-navis-backend.vercel.app/api/v1/apod';
+  private localBaseUrl = 'http://localhost:3002/api/v1/apod';
 
   constructor(private http: HttpClient) {}
 
