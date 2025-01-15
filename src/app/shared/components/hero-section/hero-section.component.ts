@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeButtonsComponent } from '../theme-buttons/theme-buttons.component';
 import { LogoComponent } from '../logo/logo.component';
