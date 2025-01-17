@@ -48,20 +48,26 @@ export class NasaGalleryComponent {
     this.setLoadingState(true);
 
     this.nasaService.getPhotoByDate(date).pipe(
-      tap((data) => {
-        console.log('Tam Açıklama (Çevrilmiş):', data.explanation);
-        this.photo = data;
-      }),
-      catchError((error) => {
-        console.error('API Hatası:', error);
-        this.errorMessage = error.status === 404
-          ? 'Bu tarihe ait bir fotoğraf bulunamadı.'
-          : 'Bir hata oluştu. Lütfen tekrar deneyin.';
-        return of(null);
-      }),
-      finalize(() => this.setLoadingState(false))
+        tap((data) => {
+            setTimeout(() => { // 1.5 saniyelik gecikme ekleyin
+                console.log('Tam Açıklama (Çevrilmiş):', data.explanation);
+                this.photo = data;
+                this.setLoadingState(false); // Gecikme sonrası isLoading'i güncelle
+            }, 1500); // 1.5 saniye = 1500 milisaniye
+        }),
+        catchError((error) => {
+            setTimeout(() => { // Hata durumunda da gecikme uygula
+                console.error('API Hatası:', error);
+                this.errorMessage = error.status === 404
+                    ? 'Bu tarihe ait bir fotoğraf bulunamadı.'
+                    : 'Bir hata oluştu. Lütfen tekrar deneyin.';
+                this.setLoadingState(false); // Gecikme sonrası isLoading'i güncelle
+            }, 1500);
+            return of(null);
+        })
     ).subscribe();
-  }
+}
+
 
   setLoadingState(isLoading: boolean): void {
     this.isLoading = isLoading;
