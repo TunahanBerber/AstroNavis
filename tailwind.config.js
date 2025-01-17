@@ -15,11 +15,12 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'off-white': '#f8f8f2'
+      },
       backgroundImage: {
         "hero-pattern": "url('/assets/img/img-background.jpeg')",
-      },
-      fontFamily: {
-        // orbitron: ["Orbitron", "sans-serif"], // Orbitron'u özelleştir
+         'gradient-to-r': 'linear-gradient(to right, #5900f4, #2196F3, #9C27B0)',
       },
     },
   },
