@@ -1,13 +1,11 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 body {
-    @apply bg-white text-black; /* Light tema */
-  }
-  
-  .dark body {
+    @apply bg-slate-200 text-black; 
+}
+
+.dark body {
     @apply bg-gray-900 text-white; /* Dark tema */
-  }
-  
+}

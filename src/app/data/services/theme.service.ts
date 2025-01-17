@@ -31,6 +31,6 @@ export class ThemeService {
 
   loadTheme(): void {
     const savedTheme = this.getTheme();
-    this.setTheme(savedTheme); // Varsayılan veya kaydedilmiş temayı uygula
+    this.setTheme(savedTheme); 
   }
 }
