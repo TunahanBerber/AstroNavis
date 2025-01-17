@@ -10,10 +10,12 @@
     <h1 class="text-4xl font-bold mb-4 ">{{ title }}</h1>
     <p class="text-lg mb-6">{{ description }}</p>
     <button
-      class="px-6 py-3 text-white font-semibold rounded hover:bg-blue-600 bg-gradient-to-r"
-      (click)="onButtonClick()"
-    >
-      {{ buttonText }}
-    </button>
+    class="px-6 py-3 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner"
+    (click)="onButtonClick()"
+  >
+    {{ buttonText }}
+  </button>
+  
+
   </div>
 </div>

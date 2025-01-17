@@ -20,12 +20,10 @@
     />
   </div>
 
-  <div
-    *ngIf="isLoading"
-    class="text-center text-lg text-gray-500 animate-pulse dark:text-gray-400"
-  >
-    Yükleniyor...
+  <div *ngIf="isLoading" class="flex justify-center items-center">
+    <div class="spinner"></div>
   </div>
+  
 
   <div
     *ngIf="errorMessage"
