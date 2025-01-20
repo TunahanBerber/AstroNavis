@@ -1,4 +1,16 @@
-<app-hero-section/>
-<app-nasa-gallery/>
-  <router-outlet />
-  
+<!-- Hero Section -->
+<app-hero-section></app-hero-section>
+
+<!-- Nasa Gallery -->
+<app-nasa-gallery></app-nasa-gallery>
+
+<!-- Router Outlet -->
+<router-outlet></router-outlet>
+
+<!-- Karadelik Butonu -->
+<div class="flex justify-center mt-4">
+  <button id="black-hole-button" (click)="triggerAnimatedBlackHole()">
+    {{ buttonTitle }}
+  </button>
+</div>
+

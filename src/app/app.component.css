@@ -1,0 +1,75 @@
+/* Buton Stilleri */
+#black-hole-button {
+    display: inline-block;
+    width: 8rem;
+    height: 8rem;
+    background-color: black;
+    color: whitesmoke;
+    border: 4px solid transparent; /* İlk başta border görünmez */
+    border-radius: 50%;
+    position: relative; /* İçerik konumlandırması için gerekli */
+    filter: blur(4px) drop-shadow(2px -7px 20px #FF6347); /* Blur efekti */
+    transition: filter 0.3s ease, border-color 0.3s ease;
+  }
+  
+  #black-hole-button::before {
+    content: ''; /* Pseudo-element */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 4px solid #FF4500; /* Keskin turuncu border */
+    border-top-color: #FFD700; /* Altın sarısı */
+    border-radius: 50%;
+    animation: none; /* İlk başta dönme animasyonu yok */
+    z-index: -1; /* İçeriğin arkasında durur */
+    transition: all 0.3s ease;
+  }
+  
+  #black-hole-button:hover {
+    filter: blur(0); /* Hover sırasında blur kalkar */
+  }
+  
+  #black-hole-button:hover::before {
+    animation: spin 1s linear infinite; /* Hover durumunda animasyon başlar */
+  }
+  
+  /* Animasyon Tanımı */
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg); /* Tam dönüş */
+    }
+  }
+  
+  @keyframes black-hole-suck {
+    0% {
+      transform: scale(1); /* Başlangıçta normal boyut */
+      opacity: 1; /* Tam opaklık */
+      background-color: white; /* Normal arka plan */
+      box-shadow: 0 0 0px black;
+    }
+    50% {
+      transform: scale(0.8) translate(-50%, -50%);
+      opacity: 0.6;
+      background-color: black; /* Arka plan kararıyor */
+      box-shadow: 0 0 50px #FF4500;
+    }
+    80% {
+      transform: scale(0.3) translate(-50%, -50%);
+      opacity: 0.3;
+      box-shadow: 0 0 80px #FFD700;
+    }
+    100% {
+      transform: scale(0) translate(-50%, -50%);
+      opacity: 0;
+      box-shadow: 0 0 100px black;
+    }
+  }
+  
+  .yutuluyor {
+    animation: black-hole-suck 3s ease-in-out forwards;
+  }
