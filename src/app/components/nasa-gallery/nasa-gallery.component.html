@@ -1,8 +1,9 @@
-<div class="container mx-auto p-6 space-y-8" >
+<div class="container mx-auto p-6 space-y-8">
   <h1 class="text-4xl font-extrabold text-center text-gray-800 dark:text-white">
     Uzay Fotoğrafları Galerisi
   </h1>
 
+  <!-- Tarih Seçimi -->
   <div class="date-picker flex flex-col items-center space-y-3">
     <label
       for="date"
@@ -20,11 +21,12 @@
     />
   </div>
 
+  <!-- Yükleniyor Göstergesi -->
   <div *ngIf="isLoading" class="flex justify-center items-center">
     <div class="spinner"></div>
   </div>
-  
 
+  <!-- Hata Mesajı -->
   <div
     *ngIf="errorMessage"
     class="bg-red-100 text-red-600 border-l-4 border-red-500 p-4 rounded-md shadow-md dark:bg-red-900 dark:text-red-300 dark:border-red-700"
@@ -32,7 +34,8 @@
     <p class="text-md">{{ errorMessage }}</p>
   </div>
 
-  <div *ngIf="photo; else noPhoto" class="photo-info flex flex-col items-center space-y-5">
+  <!-- Fotoğraf Bilgisi -->
+  <div *ngIf="photo" class="photo-info flex flex-col items-center space-y-5">
     <img 
       [src]="photo.url" 
       alt="NASA Fotoğrafı" 
@@ -47,17 +50,9 @@
       {{ photo.explanation }}
     </p>
   </div>
-  
-  <!-- Boş Durum Şablonu -->
-  <ng-template #noPhoto>
-    <p class="text-center text-lg text-gray-500 dark:text-gray-400">
-      Lütfen bir tarih seçin.
-    </p>
-  </ng-template>
+  <!-- <img src="assets/img/myLady.jpeg" alt="Canım Sevgilim" /> -->
 
-  <ng-template #noPhoto>
-    <p class="text-center text-lg text-gray-500 dark:text-gray-400">
-      Lütfen bir tarih seçin.
-    </p>
-  </ng-template>
+
+
+
 </div>
