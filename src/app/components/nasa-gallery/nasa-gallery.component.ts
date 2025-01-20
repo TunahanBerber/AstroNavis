@@ -30,16 +30,16 @@ export class NasaGalleryComponent {
   onDateChange(event: Event): void {
     const selectedDate = (event.target as HTMLInputElement).value;
 
-    // Özel tarih kontrolü: 2024-07-02
-    if (selectedDate === '2024-07-02') {
-      this.photo = {
-        title: 'Canım Sevgilim Günaydınnn', // Başlık
-        explanation: `Aşkımm, kütle çekimin sadece 43 kilo olabilir ama senin etrafında dönüp durmam için bu bile yeterli! Kuantum fiziği mi, yoksa senin gözlerin mi beni çekiyor bilmiyorum, ama çekim alanından kaçış hızına ulaşmak imkânsız. Sen benim kara delik kadar derin, yıldızlar kadar parlak ve bir kuasar kadar güçlü ışığım oldun. Evrenin neresinde olursam olayım, dönüp dolaşıp sana geliyorum. Çünkü benim tüm fizik kurallarım seninle yeniden yazılıyor!`, // Açıklama
-        url: 'assets/img/myLady.jpeg', // Görsel yolu
-      };
-      this.errorMessage = null; // Hata mesajını sıfırla
-      return; // API'ye istek yapılmaz
-    }
+    // // Özel tarih kontrolü: 2024-07-02
+    // if (selectedDate === '2024-07-02') {
+    //   this.photo = {
+    //     title: 'Canım Sevgilim Günaydınnn', // Başlık
+    //     explanation: `Aşkımm, kütle çekimin sadece 43 kilo olabilir ama senin etrafında dönüp durmam için bu bile yeterli! Kuantum fiziği mi, yoksa senin gözlerin mi beni çekiyor bilmiyorum, ama çekim alanından kaçış hızına ulaşmak imkânsız. Sen benim kara delik kadar derin, yıldızlar kadar parlak ve bir kuasar kadar güçlü ışığım oldun. Evrenin neresinde olursam olayım, dönüp dolaşıp sana geliyorum. Çünkü benim tüm fizik kurallarım seninle yeniden yazılıyor!`, // Açıklama
+    //     url: 'assets/img/myLady.jpeg', // Görsel yolu
+    //   };
+    //   this.errorMessage = null; // Hata mesajını sıfırla
+    //   return; // API'ye istek yapılmaz
+    // }
 
     // Diğer tarihler için API isteği
     if (this.isValidDate(selectedDate)) {
