@@ -13,7 +13,7 @@ export class HeroSectionComponent  {
 
   @Input() title: string = 'Kainatın Sırlarına Yolculuk';
   @Input() description: string = 'Uzaydan gelen ışık yıllarına dalın ve bilinmeyeni keşfedin.';
-  @Input() buttonText: string = 'Keşfet';
+  @Input() buttonText: string = 'Yolculuğa Başla';
   @Output() buttonClick = new EventEmitter<void>();
 
 
