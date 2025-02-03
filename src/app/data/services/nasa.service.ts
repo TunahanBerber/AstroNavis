@@ -1,70 +1,46 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map, switchMap, catchError, of } from 'rxjs';
+import { Observable, combineLatest, map, switchMap, catchError, of } from 'rxjs';
+import { TranslationService } from '../language/translation.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NasaService {
+  // NASA APOD API'sine erişim sağlamak için URL'imiz
   private baseUrl = 'https://astro-navis-backend.vercel.app/api/v1/apod';
-  private localBaseUrl = 'http://localhost:3002/api/v1/apod';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private translationService: TranslationService
+  ) {}
 
-  // Google Translate üzerinden çeviri işlemi
-  private translateText(text: string): Observable<string> {
-    const parts = text.match(/[^.!?]+[.!?]+/g) || [text];
-
-    return forkJoin(
-      parts.map((part) =>
-        this.http
-          .get<any>(
-            `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=tr&dt=t&q=${encodeURIComponent(
-              part
-            )}`
-          )
-          .pipe(
-            map((response) => this.normalizeText(response[0][0][0])), 
-            catchError(() => of(part))
-          )
-      )
-    ).pipe(
-      map((translatedParts) => translatedParts.join(' ')), 
-      catchError(() => of(text)) 
-    );
-  }
-
-  // Çevrilen metni normalize et
-  private normalizeText(text: string): string {
-    return text
-      .replace(/\s+/g, ' ') 
-      .replace(/(?<=[a-zıüğçşö])(?=[A-ZİÜĞÇŞÖ])/g, ' ');
-  }
-
-
+  // Belirli bir tarihe göre NASA'nın fotoğrafını çekip, başlık ve açıklamayı çeviriyorum.
   getPhotoByDate(date: string): Observable<any> {
-    const url = `${this.baseUrl}?date=${date}`; 
+    const url = `${this.baseUrl}?date=${date}`;
+
     return this.http.get<any>(url).pipe(
       switchMap((data) => {
         console.log('Orijinal Başlık:', data.title);
-        console.log('Orijinal Explanation:', data.explanation);
-  
-        const title$ = this.translateText(data.title); 
-        const explanation$ = this.translateText(data.explanation); 
-  
-        return forkJoin({ title: title$, explanation: explanation$ }).pipe(
-          map((translations) => ({
+        console.log('Orijinal Açıklama:', data.explanation);
+
+        // Başlık ve açıklama metinlerini çeviri servisine gönderiyorum.
+        const translatedTitle$ = this.translationService.translateText(data.title);
+        const translatedExplanation$ = this.translationService.translateText(data.explanation);
+
+        // Her iki çeviri tamamlandığında, sonuçları birleştirip, orijinal veriye ekliyorum.
+        return combineLatest([translatedTitle$, translatedExplanation$]).pipe(
+          map(([translatedTitle, translatedExplanation]) => ({
             ...data,
-            title: translations.title,
-            explanation: translations.explanation,
+            title: translatedTitle,
+            explanation: translatedExplanation,
           }))
         );
       }),
       catchError((error) => {
-        console.error('Backend API Hatası:', error);
+        console.error('NASA API hatası:', error);
         return of({ error: 'Veri alınamadı.' });
       })
     );
   }
-  
 }
