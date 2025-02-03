@@ -1,5 +1,9 @@
 <div class="flex justify-center mt-4">
-    <button id="black-hole-button" (click)="triggerAnimatedBlackHole()">
-      {{ buttonTitle }}
-    </button>
-  </div>
+  <button
+    id="black-hole-button"
+    class="spin"
+    (click)="triggerAnimatedBlackHole()"
+  >
+   <span class="select-none">{{ buttonTitle }}</span> 
+  </button>
+</div>
