@@ -45,27 +45,3 @@
     }
   }
   
-  @keyframes black-hole-suck {
-    0% {
-      transform: scale(1); 
-      opacity: 1;
-      background-color: white;
-      box-shadow: 0 0 0px black;
-    }
-    50% {
-      transform: scale(0.8) translate(-50%, -50%);
-      opacity: 0.6;
-      background-color: black;
-      box-shadow: 0 0 50px #FF4500;
-    }
-    80% {
-      transform: scale(0.3) translate(-50%, -50%);
-      opacity: 0.3;
-      box-shadow: 0 0 80px #FFD700;
-    }
-    100% {
-      transform: scale(0) translate(-50%, -50%);
-      opacity: 0;
-      box-shadow: 0 0 100px black;
-    }
-  }
