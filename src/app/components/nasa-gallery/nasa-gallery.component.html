@@ -23,8 +23,6 @@
     <p class="text-sm text-gray-600 dark:text-gray-300">
       {{ selectedDateMessage }}
     </p>
-
-
   </div>
 
   <!-- Yükleniyor Göstergesi -->
@@ -40,13 +38,26 @@
     <p class="text-md">{{ errorMessage }}</p>
   </div>
 
-  <!-- Fotoğraf Bilgisi -->
+  <!-- İçerik Gösterimi -->
   <div *ngIf="photo" class="photo-info flex flex-col items-center space-y-5">
+
+    <!-- Fotoğraf Gösterimi -->
     <img 
+      *ngIf="photo.media_type === 'image'"
       [src]="photo.url" 
       alt="NASA Fotoğrafı" 
       class="w-full max-w-3xl rounded-lg shadow-lg dark:shadow-gray-800" 
     />
+
+    <!-- Video Gösterimi -->
+    <iframe 
+      *ngIf="photo.media_type === 'video'"
+      [src]="safeVideoUrl" 
+      frameborder="0"
+      allowfullscreen
+      class="w-full max-w-3xl h-96 rounded-lg shadow-lg dark:shadow-gray-800"
+    ></iframe>
+
     <h2 class="text-2xl font-bold text-center text-gray-800 dark:text-white">
       {{ photo.title }}
     </h2>
@@ -56,5 +67,4 @@
       {{ photo.explanation }}
     </p>
   </div>
-
 </div>
