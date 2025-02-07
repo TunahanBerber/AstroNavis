@@ -58,7 +58,7 @@ export class BlackHoleComponent {
         if (currentIndex < messageText.length) {
           messageElement.textContent += messageText[currentIndex];
           currentIndex++;
-          setTimeout(typeWriter, 100); // 100ms hızında yazma (isteğe göre ayarlanabilir)
+          setTimeout(typeWriter, 100); // 100ms hızında yazma
         }
       };
   
