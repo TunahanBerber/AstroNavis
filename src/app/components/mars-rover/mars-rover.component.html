@@ -1,42 +1,47 @@
 <div class="container mx-auto mt-16 px-4">
-  <div *ngIf="isLoading" class="text-center">Yükleniyor...</div>
-  <div *ngIf="errorMessage" class="error text-center text-red-500">{{ errorMessage }}</div>
+  <!-- Yükleniyor Mesajı -->
+  <div *ngIf="isLoading" class="text-center text-blue-600 font-semibold">
+    Yükleniyor...
+  </div>
 
+
+  <!-- Fotoğraflar -->
   <div *ngIf="photosByDate && photosByDate.length > 0" class="text-center">
     <!-- Butonlar (Önceki ve Sonraki) -->
     <div class="mb-5 flex justify-center gap-4">
-      <button 
-        (click)="prevPhoto()" 
-        [disabled]="currentIndex === 0" 
-        class="px-4 py-2 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed">
+      <button
+        (click)="prevPhoto()"
+        [disabled]="currentIndex === 0"
+        class="px-4 py-2 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 ease-in-out"
+      >
         Önceki
       </button>
-      <button 
-        (click)="nextPhoto()" 
-        [disabled]="currentIndex === photosByDate.length - 1" 
-        class="px-4 py-2 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed">
+      <button
+        (click)="nextPhoto()"
+        [disabled]="currentIndex === photosByDate.length - 1"
+        class="px-4 py-2 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 ease-in-out"
+      >
         Sonraki
       </button>
     </div>
-    
+
     <!-- Fotoğraf -->
     <div class="max-w-3xl mx-auto rounded-lg shadow-lg dark:shadow-gray-800 mb-6">
-      <img [src]="photosByDate[currentIndex].img_src" alt="Mars Rover Photo" class="w-full rounded-md shadow-lg">
+      <img
+        [src]="photosByDate[currentIndex].img_src"
+        alt="Mars Rover Photo"
+        class="w-full rounded-md shadow-lg"
+      />
     </div>
 
     <!-- Mars Keşif Bilgisi -->
     <div class="photo-info flex flex-col items-center space-y-5">
-      <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-white">Mars Rover Keşfi Hakkında</h3>
+      <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-white">
+        Mars Rover Keşfi Hakkında
+      </h3>
       <p class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line">
-        NASA'nın Perseverance rover'ı Mars yüzeyine iniş yaptıktan sonra, gezegenin tarihi hakkında birçok önemli bilgi topladı. 2021 yılında başlatılan bu misyon, Mars'ta suyun geçmişte var olduğuna dair izler ve eski yaşamın olasılıklarına dair araştırmalar yapmaktadır.
-      </p>
-      <p class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line">
-        Fotoğraflar, Mars'ın yüzeyindeki taşları, kraterleri, ve geçmişteki su akışlarını gösteren izleri içermektedir. Ayrıca, bu rover Mars'a gönderilen ilk cihazlardan biri olup, gelecekte Mars'a insanlı keşiflerin temelini atma amacı taşır.
-      </p>
-      <p class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line">
-        Mars, Güneş Sistemi'nde keşfi en heyecan verici gezegenlerden biri olmaya devam ediyor. Perseverance, Mars yüzeyindeki kaya örneklerini topluyor ve bu örneklerin Dünya'ya getirilmesi için önemli adımlar atılıyor.
+        NASA'nın Perseverance rover'ı Mars yüzeyine iniş yaptıktan sonra, gezegenin tarihi hakkında birçok önemli bilgi topladı. 2021 yılında başlatılan bu misyon, Mars'ta suyun geçmişte var olduğuna dair izler ve eski yaşamın olasılıklarına dair araştırmalar yapmaktadır. Fotoğraflar, Mars'ın yüzeyindeki taşları, kraterleri, ve geçmişteki su akışlarını gösteren izleri içermektedir. Ayrıca, bu rover Mars'a gönderilen ilk cihazlardan biri olup, gelecekte Mars'a insanlı keşiflerin temelini atma amacı taşır. Mars, Güneş Sistemi'nde keşfi en heyecan verici gezegenlerden biri olmaya devam ediyor. Perseverance, Mars yüzeyindeki kaya örneklerini topluyor ve bu örneklerin Dünya'ya getirilmesi için önemli adımlar atılıyor.
       </p>
     </div>
   </div>
 </div>
-
