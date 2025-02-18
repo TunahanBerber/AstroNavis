@@ -7,16 +7,16 @@ import { Observable } from 'rxjs';
 })
 export class EmailService {
 
-  private apiURL = 'http://localhost:3002/api/v1/email';
+  private readonly baseURL = 'https://astro-navis-backend.vercel.app/api/v1/email';
 
   constructor( private http: HttpClient) { }
 
   subscribeEmail(email: string) :Observable<any> {
-    return this.http.post(this.apiURL, {email});
+    return this.http.post(this.baseURL, {email});
   }
 
 
   getEmails() :Observable<any> {
-    return this.http.get(this.apiURL);
+    return this.http.get(this.baseURL);
   }
 }
