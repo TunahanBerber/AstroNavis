@@ -1,28 +1,54 @@
 <footer class="bg-gray-800 text-white py-4 mt-10">
+  <!-- Logo Alanı -->
   <div class="mt-auto flex justify-center">
     <app-logo></app-logo>
   </div>
+
+  <!-- Footer İçeriği -->
   <div class="container mx-auto text-center">
     <p>&copy; 2025 AstroNavis. Tüm hakları saklıdır.</p>
+
+    <!-- Abonelik Formu -->
     <div class="mt-4">
-      <form (submit)="onSubscribe(); $event.preventDefault()">
-        <label for="newsletter" class="block mb-2">Astronomi yolculuğunda bize eşlik edin</label>
+      <form
+        #subscriptionForm="ngForm"
+        (ngSubmit)="onSubscribe(); $event.preventDefault()"
+      >
+        <label for="newsletter" class="block mb-2">
+          Astronomi yolculuğunda bize eşlik edin!
+        </label>
+
+        <!-- E-posta Girişi -->
         <input
-        type="email"
-        id="emailInput"
-        name="email" 
-        [(ngModel)]="email"
-        placeholder="E-posta adresinizi girin"
-        class="px-4 py-2 rounded text-gray-800"
-      />
-      
+          class="px-4 py-2 rounded text-gray-800"
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          #emailInput="ngModel"
+          required
+          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}"
+          (input)="message = ''"
+        />
+
+        <!-- Abone Ol Butonu -->
         <button
           type="submit"
+          [disabled]="subscriptionForm.invalid"
           class="ml-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner"
         >
           Abone Ol
         </button>
       </form>
+ 
+      <!-- Hata Mesajı -->
+      <span
+        *ngIf="emailInput.invalid && emailInput.touched && emailInput.value"
+        class="text-red-500 mt-2"
+      >
+        Lütfen geçerli bir e-posta giriniz!
+      </span>
+
+      <!-- Başarı / Hata Mesajı -->
       <p class="mt-2 text-sm">{{ message }}</p>
     </div>
   </div>

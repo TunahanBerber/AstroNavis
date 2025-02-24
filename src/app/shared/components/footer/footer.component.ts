@@ -15,10 +15,17 @@ export class FooterComponent {
   email: string = '';
   message: string = '';
 
-  constructor(private emailService: EmailService) {} 
+  constructor(private emailService: EmailService) {}
 
   onSubscribe(): void {
+    // E-posta boş veya geçerli formatta değilse hata mesajı
     if (!this.email) {
+      this.message = 'Lütfen geçerli bir e-posta giriniz!';
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailRegex.test(this.email)) {
       this.message = 'Lütfen geçerli bir e-posta giriniz!';
       return;
     }
@@ -27,7 +34,7 @@ export class FooterComponent {
     this.emailService.subscribeEmail(this.email).subscribe({
       next: () => {
         this.message = 'E-posta başarıyla abone oldu!';
-        this.email = '';
+        this.email = ''; // Input'u temizle
       },
       error: (error) => {
         if (error.status === 409) {
