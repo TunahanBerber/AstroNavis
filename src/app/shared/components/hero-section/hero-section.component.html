@@ -1,5 +1,5 @@
 <div
-  class="background-img-hero bg-hero-pattern bg-contain from-black to-gray-900 text-white dark:from-gray-900 dark:to-black"
+  class="background-img-hero bg-hero-pattern bg-cover from-black to-gray-900 text-white dark:from-gray-900 dark:to-black sm:bg-cover md:bg-contain lg:bg-contain"
 >
   <div class="flex justify-between items-center w-full px-4">
     <app-logo></app-logo>
@@ -7,15 +7,13 @@
   </div>
 
   <div class="container mx-auto text-center py-20">
-    <h1 class="text-4xl font-bold mb-4 ">{{ title }}</h1>
+    <h1 class="text-4xl font-bold mb-4">{{ title }}</h1>
     <p class="text-lg mb-6">{{ description }}</p>
     <button
-    class="px-6 py-3 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner"
-    (click)="onButtonClick()"
-  >
-    {{ buttonText }}
-  </button>
-  
-
+      class="px-6 py-3 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner"
+      (click)="onButtonClick()"
+    >
+      {{ buttonText }}
+    </button>
   </div>
 </div>
