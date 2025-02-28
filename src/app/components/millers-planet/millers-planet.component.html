@@ -1,0 +1,23 @@
+<div class="container mx-auto mt-8 flex flex-col items-center px-4">
+  <h1 class="text-2xl font-bold mb-4">
+    <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-white">
+      Miller'ın Gezegeninde Kaç Saat Yaşadın?
+    </h3>
+  </h1>
+  <input
+    type="date"
+    class="p-2 border rounded text-black"
+    [(ngModel)]="birthDate"
+  />
+  <button
+    class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    (click)="calculateMillerTime()"
+  >
+    Hesapla
+  </button>
+  <p *ngIf="millerTime" class="mt-4 text-lg">
+    Miller'ın gezegeninde yaklaşık {{ millerTime.years }} yıl,
+    {{ millerTime.months }} ay, {{ millerTime.days }} gün,
+    {{ millerTime.hours }} saat, {{millerTime.minutes}} dakika, {{millerTime.seconds}} saniye  geçmiş!
+  </p>
+</div>
