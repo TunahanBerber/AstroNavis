@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { max } from 'rxjs';
 
 @Component({
   selector: 'app-millers-planet',
@@ -9,12 +10,21 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './millers-planet.component.html',
   styleUrls: ['./millers-planet.component.css']
 })
-export class MillersPlanetComponent {
+export class MillersPlanetComponent implements OnInit {
   birthDate: string = '';
+  maxDate: string = '';
   millerTime: { years: number, months: number, days: number, hours: number, minutes: number, seconds: number } | null = null;
   private readonly EARTH_YEARS_PER_MILLER_HOUR = 7;  // 7 Dünya yılı = 1 Miller saati
   private readonly EARTH_DAYS_PER_YEAR = 365.25;  // Dünya yılı gün cinsinden
   private readonly MILLER_HOURS_PER_DAY = 24; // Miller gezegeninde bir gün 24 saat
+
+
+  ngOnInit(): void {
+    this.setMaxDate(); 
+  }
+  setMaxDate(): void {
+    this.maxDate = new Date().toISOString().split('T')[0];
+  }
 
   calculateMillerTime(): void {
     if (!this.birthDate) return;

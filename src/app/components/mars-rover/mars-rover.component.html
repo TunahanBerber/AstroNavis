@@ -4,7 +4,6 @@
     Yükleniyor...
   </div>
 
-
   <!-- Fotoğraflar -->
   <div *ngIf="photosByDate && photosByDate.length > 0" class="text-center">
     <!-- Butonlar (Önceki ve Sonraki) -->
@@ -26,7 +25,9 @@
     </div>
 
     <!-- Fotoğraf -->
-    <div class="max-w-3xl mx-auto rounded-lg shadow-lg dark:shadow-gray-800 mb-6">
+    <div
+      class="max-w-3xl mx-auto rounded-lg shadow-lg dark:shadow-gray-800 mb-6"
+    >
       <img
         [src]="photosByDate[currentIndex].img_src"
         alt="Mars Rover Photo"
@@ -39,8 +40,20 @@
       <h3 class="text-2xl font-bold text-center text-gray-800 dark:text-white">
         Mars Rover Keşfi Hakkında
       </h3>
-      <p class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line">
-        NASA'nın Perseverance rover'ı Mars yüzeyine iniş yaptıktan sonra, gezegenin tarihi hakkında birçok önemli bilgi topladı. 2021 yılında başlatılan bu misyon, Mars'ta suyun geçmişte var olduğuna dair izler ve eski yaşamın olasılıklarına dair araştırmalar yapmaktadır. Fotoğraflar, Mars'ın yüzeyindeki taşları, kraterleri, ve geçmişteki su akışlarını gösteren izleri içermektedir. Ayrıca, bu rover Mars'a gönderilen ilk cihazlardan biri olup, gelecekte Mars'a insanlı keşiflerin temelini atma amacı taşır. Mars, Güneş Sistemi'nde keşfi en heyecan verici gezegenlerden biri olmaya devam ediyor. Perseverance, Mars yüzeyindeki kaya örneklerini topluyor ve bu örneklerin Dünya'ya getirilmesi için önemli adımlar atılıyor.
+      <p
+        class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line"
+      >
+        NASA'nın Perseverance rover'ı Mars yüzeyine iniş yaptıktan sonra,
+        gezegenin tarihi hakkında birçok önemli bilgi topladı. 2021 yılında
+        başlatılan bu misyon, Mars'ta suyun geçmişte var olduğuna dair izler ve
+        eski yaşamın olasılıklarına dair araştırmalar yapmaktadır. Fotoğraflar,
+        Mars'ın yüzeyindeki taşları, kraterleri, ve geçmişteki su akışlarını
+        gösteren izleri içermektedir. Ayrıca, bu rover Mars'a gönderilen ilk
+        cihazlardan biri olup, gelecekte Mars'a insanlı keşiflerin temelini atma
+        amacı taşır. Mars, Güneş Sistemi'nde keşfi en heyecan verici
+        gezegenlerden biri olmaya devam ediyor. Perseverance, Mars yüzeyindeki
+        kaya örneklerini topluyor ve bu örneklerin Dünya'ya getirilmesi için
+        önemli adımlar atılıyor.
       </p>
     </div>
   </div>

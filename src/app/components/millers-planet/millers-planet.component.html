@@ -8,9 +8,10 @@
     type="date"
     class="p-2 border rounded text-black"
     [(ngModel)]="birthDate"
+    [max]="maxDate"
   />
   <button
-    class="mt-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+    class="mt-4 px-4 py-2 text-white font-semibold rounded bg-gradient-to-r from-blue-500 to-blue-700 hover:bg-blue-600 focus:outline-none focus:ring-0 focus:border-none active:scale-95 active:bg-blue-800 shadow-md active:shadow-inner disabled:opacity-50 disabled:cursor-not-allowed transition duration-200 ease-in-out"
     (click)="calculateMillerTime()"
   >
     Hesapla
@@ -18,6 +19,20 @@
   <p *ngIf="millerTime" class="mt-4 text-lg">
     Miller'ın gezegeninde yaklaşık {{ millerTime.years }} yıl,
     {{ millerTime.months }} ay, {{ millerTime.days }} gün,
-    {{ millerTime.hours }} saat, {{millerTime.minutes}} dakika, {{millerTime.seconds}} saniye  geçmiş!
+    {{ millerTime.hours }} saat, {{ millerTime.minutes }} dakika,
+    {{ millerTime.seconds }} saniye geçmiş!
+  </p>
+</div>
+
+<div class="photo-info flex flex-col items-center space-y-5 mt-4">
+  <p
+    class="text-md text-justify text-gray-600 dark:text-gray-300 leading-relaxed max-w-4xl indent-8 whitespace-pre-line"
+  >
+    Miller’ın gezegeni, Interstellar filminde, Gargantua kara deliğinin güçlü
+    kütle çekimi nedeniyle aşırı zaman genişlemesine uğrar. Burada geçen 1 saat,
+    Dünya’da yaklaşık 7 yıla eşittir. Bu fenomen, Einstein’ın genel görelilik
+    teorisinin bir örneğidir. Yani, Miller’ın gezegeninde birkaç saat geçirmek,
+    Dünya’da onlarca yılın geçmesine neden olabilir. 24 saatlik bir süre,
+    Dünya’da 168 yıl anlamına gelir, bu da nesillerin değişmesine yol açar.
   </p>
 </div>

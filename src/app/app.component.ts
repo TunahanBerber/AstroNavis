@@ -7,10 +7,11 @@ import { FooterComponent } from './shared/components/footer/footer.component';
 import { LogoComponent } from './shared/components/logo/logo.component';
 import { MarsRoverComponent } from './components/mars-rover/mars-rover.component';
 import { MillersPlanetComponent } from './components/millers-planet/millers-planet.component';
+import { ChatbotComponent } from "./components/chatbot/chatbot.component";
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent,BlackHoleComponent,FooterComponent,MarsRoverComponent,MillersPlanetComponent],
+  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent, BlackHoleComponent, FooterComponent, MarsRoverComponent, MillersPlanetComponent, ChatbotComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
