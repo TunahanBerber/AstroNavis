@@ -21,12 +21,12 @@ export class ChatbotComponent {
   sendMessage() {
     if (!this.userInput.trim()) return;
 
-    // Kullanıcı mesajını ekle
     const userMessage: Message = { 
       text: this.userInput, 
       sender: 'user',
       timestamp: new Date() 
     };
+    
     this.messages.push(userMessage);
     this.loading = true;
 
