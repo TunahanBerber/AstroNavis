@@ -1,16 +1,16 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AiService {
-  private apiUrl = environment.apiUrl;
+  private apiUrl = 'https://astronavis-backends.vercel.app/api/v1/ai/generate';
+
 
   constructor(private http: HttpClient) {}
 
   generateResponse(prompt: string) {
-    return this.http.post(`${this.apiUrl}/ai/generate`, { prompt });
+    return this.http.post<{ generatedText: string }>(this.apiUrl, { prompt });
   }
 }
