@@ -1,13 +1,8 @@
 import { CommonModule } from '@angular/common';
-import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-
-interface Message {
-  text: string;
-  sender: 'user' | 'bot';
-  timestamp?: Date;
-}
+import { AiService } from '../../data/services/ai.service';
+import { Message } from '../../models/message';
 
 @Component({
   selector: 'app-chatbot',
@@ -20,45 +15,39 @@ export class ChatbotComponent {
   messages: Message[] = [];
   userInput: string = '';
   loading: boolean = false;
-  private apiUrl = 'http://localhost:3002/api/v1/ai/generate'; // Backend API URL
 
-  constructor(private http: HttpClient) {}
+  constructor(private aiService: AiService) {}
 
   sendMessage() {
     if (!this.userInput.trim()) return;
 
     // Kullanıcı mesajını ekle
-    const userMessage: Message = { text: this.userInput, sender: 'user' };
+    const userMessage = new Message(this.userInput, 'user');
     this.messages.push(userMessage);
     this.loading = true;
 
-    // Backend API'ye post isteği gönder
-    this.http
-      .post<{ generatedText: string }>(this.apiUrl, { prompt: this.userInput })
-      .subscribe(
-        (res) => {
-          // API yanıtı başarılıysa
-          if (res.generatedText) {
-            this.messages.push({ text: res.generatedText, sender: 'bot' });
-          } else {
-            // Hata durumunda
-            this.messages.push({
-              text: 'Bir hata oluştu. Lütfen tekrar deneyin.',
-              sender: 'bot',
-            });
-          }
-          this.loading = false;
-        },
-        (error) => {
-          // API isteği başarısız olursa hata mesajını göster
-          console.error('API Hatası:', error);
-          this.messages.push({
-            text: 'Bir hata oluştu. Lütfen tekrar deneyin.',
-            sender: 'bot',
-          });
-          this.loading = false;
+    // Backend API'ye post isteği göndermek için AiService kullanıyoruz
+    this.aiService.generateResponse(this.userInput).subscribe(
+      (res: { generatedText: string }) => {
+        // API yanıtı başarılıysa
+        if (res.generatedText) {
+          const botMessage = new Message(res.generatedText, 'bot');
+          this.messages.push(botMessage);
+        } else {
+          // Hata durumunda
+          const botMessage = new Message('Bir hata oluştu. Lütfen tekrar deneyin.', 'bot');
+          this.messages.push(botMessage);
         }
-      );
+        this.loading = false;
+      },
+      (error) => {
+        // API isteği başarısız olursa hata mesajını göster
+        console.error('API Hatası:', error);
+        const botMessage = new Message('Bir hata oluştu. Lütfen tekrar deneyin.', 'bot');
+        this.messages.push(botMessage);
+        this.loading = false;
+      }
+    );
 
     // Kullanıcı girişi sıfırla
     this.userInput = '';
