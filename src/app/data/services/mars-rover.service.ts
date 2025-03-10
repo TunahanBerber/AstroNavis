@@ -9,7 +9,7 @@ import { MarsRover } from '../../models/mars-rover';
   providedIn: 'root',
 })
 export class MarsRoverService {
-  private readonly baseUrl = 'https://astronavis-backends.vercel.app/api/v1/mars-rover';
+  private readonly baseUrl = 'https://astronavis-backend.vercel.app/api/v1/mars-rover';
 
   constructor(private http: HttpClient) {}
 
