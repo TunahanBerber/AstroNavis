@@ -8,7 +8,7 @@ import { TranslationService } from '../language/translation.service';
 })
 export class NasaService {
   // NASA APOD API'sine erişim sağlamak için URL'imiz
-  private baseUrl = 'https://astronavis-backends.vercel.app/api/v1/apod';
+  private baseUrl = 'https://astronavis-backend.vercel.app/api/v1/apod';
 
 
   constructor(

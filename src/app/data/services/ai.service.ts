@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class AiService {
-  private apiUrl = 'https://astronavis-backends.vercel.app/api/v1/ai/generate';
+  private apiUrl = 'https://astronavis-backend.vercel.app/api/v1/ai/generate';
 
 
   constructor(private http: HttpClient) {}
