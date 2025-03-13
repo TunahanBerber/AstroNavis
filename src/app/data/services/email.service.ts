@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class EmailService {
 
-  private readonly baseURL = 'https://astronavis-backend.vercel.app/api/v1/email';
+  private readonly baseURL = 'https://astronavis-backend.vercel.app/api/v1/emails';
 
   constructor( private http: HttpClient) { }
 
