@@ -6,6 +6,16 @@
 
   <!-- Fotoğraflar -->
   <div *ngIf="photosByDate && photosByDate.length > 0" class="text-center">
+    <!-- Fotoğraf -->
+    <div
+      class="max-w-3xl mx-auto rounded-lg shadow-lg dark:shadow-gray-800 mb-6"
+    >
+      <img
+        [src]="photosByDate[currentIndex].img_src"
+        alt="Mars Rover Photo"
+        class="w-full rounded-md shadow-lg"
+      />
+    </div>
     <!-- Butonlar (Önceki ve Sonraki) -->
     <div class="mb-5 flex justify-center gap-4">
       <button
@@ -22,17 +32,6 @@
       >
         Sonraki
       </button>
-    </div>
-
-    <!-- Fotoğraf -->
-    <div
-      class="max-w-3xl mx-auto rounded-lg shadow-lg dark:shadow-gray-800 mb-6"
-    >
-      <img
-        [src]="photosByDate[currentIndex].img_src"
-        alt="Mars Rover Photo"
-        class="w-full rounded-md shadow-lg"
-      />
     </div>
 
     <!-- Mars Keşif Bilgisi -->

@@ -30,11 +30,11 @@ export class FooterComponent {
       return;
     }
 
-    // EmailService ile abonelik işlemi başlatılıyor
+    // EmailService ile abonelik işlemi
     this.emailService.subscribeEmail(this.email).subscribe({
       next: () => {
         this.message = 'E-posta başarıyla abone oldu!';
-        this.email = ''; // Input'u temizle
+        this.email = ''; 
       },
       error: (error) => {
         if (error.status === 409) {
