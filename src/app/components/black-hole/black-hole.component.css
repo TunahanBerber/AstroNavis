@@ -12,12 +12,12 @@
   position: relative;
   filter: blur(4px) drop-shadow(2px -7px 20px #2196F3); 
   transition: filter 0.3s ease, border-color 0.3s ease;
-  padding: 0.5rem; /* Metnin taşmasını önlemek için */
+  padding: 0.5rem; 
   display: flex;
   align-items: center;
   justify-content: center;
-  white-space: normal; /* Mobilde taşmayı önler */
-  word-break: break-word; /* Uzun kelimeleri böler */
+  white-space: normal;
+  word-break: break-word; 
 }
 
 #black-hole-button::before {

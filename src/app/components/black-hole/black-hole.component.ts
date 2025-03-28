@@ -20,7 +20,7 @@ export class BlackHoleComponent {
 
     const buttonRect = button.getBoundingClientRect();
   
-    // Burada bilerek roota veriyorum
+    // Burada bilerek root'a yönlendiriyorum
     appRoot.style.transition = 'all 2s ease-in-out';
     appRoot.style.transformOrigin = 'center'; // Dönüşümün yönünün merkez olmasını istiyorum.
     appRoot.style.transform = `translate(${buttonRect.left - window.innerWidth / 2}px, ${buttonRect.top - window.innerHeight / 2}px) scale(0)`;
