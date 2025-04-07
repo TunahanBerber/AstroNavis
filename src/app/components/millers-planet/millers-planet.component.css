@@ -1,0 +1,7 @@
+.millers-text {
+    font-family: 'Orbitron, sans-serif';
+    background: linear-gradient(90deg, #5900f4, #9C27B0, #2196F3, #00B0FF);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: textColorTransition 3s ease-in-out infinite;
+}
