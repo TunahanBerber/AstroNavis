@@ -8,10 +8,11 @@ import { LogoComponent } from './shared/components/logo/logo.component';
 import { MarsRoverComponent } from './components/mars-rover/mars-rover.component';
 import { MillersPlanetComponent } from './components/millers-planet/millers-planet.component';
 import { ChatbotComponent } from "./components/chatbot/chatbot.component";
+import { SpaceQuotesComponent } from './components/space-quotes/space-quotes.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent, BlackHoleComponent, FooterComponent, MarsRoverComponent, MillersPlanetComponent, ChatbotComponent],
+  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent, BlackHoleComponent, FooterComponent, MarsRoverComponent, MillersPlanetComponent, ChatbotComponent,SpaceQuotesComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
