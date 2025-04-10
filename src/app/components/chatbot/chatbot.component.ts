@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewChecked } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AiService } from '../../data/services/ai.service';
 import { Message } from '../../models/message';
@@ -11,14 +11,14 @@ import { Message } from '../../models/message';
   templateUrl: './chatbot.component.html',
   styleUrls: ['./chatbot.component.css'],
 })
-export class ChatbotComponent {
+export class ChatbotComponent implements AfterViewChecked {
   messages: Message[] = [
     new Message(
       `👋 Merhaba! Ben Astronavis'in yapay zekâ asistanıyım.  
-  🚀 Uzayla ilgili merak ettiğiniz her şeyi cevaplayabilirim:  
-  yıldızlar, gezegenler, kara delikler, süpernovalar ve çok daha fazlası...  
-    
-  Hazırsanız yıldızlara birlikte bakalım! ✨`,
+🚀 Uzayla ilgili merak ettiğiniz her şeyi cevaplayabilirim:  
+yıldızlar, gezegenler, kara delikler, süpernovalar ve çok daha fazlası...  
+
+Hazırsanız yıldızlara birlikte bakalım! ✨`,
       'bot',
       new Date()
     ),
@@ -27,6 +27,7 @@ export class ChatbotComponent {
   userInput: string = '';
   loading: boolean = false;
   @ViewChild('autoTextarea') autoTextarea!: ElementRef;
+  @ViewChild('messagesContainer') messagesContainer!: ElementRef;
 
   constructor(private aiService: AiService) {}
 
@@ -38,25 +39,17 @@ export class ChatbotComponent {
     this.messages.push(userMessage);
     this.loading = true;
 
-    // Backend API'ye post isteği göndermek için AiService kullanıyoruz
+    // Backend API'ye post isteği gönder
     this.aiService.generateResponse(this.userInput).subscribe(
       (res: { generatedText: string }) => {
-        // API yanıtı başarılıysa
-        if (res.generatedText) {
-          const botMessage = new Message(res.generatedText, 'bot');
-          this.messages.push(botMessage);
-        } else {
-          // Hata durumunda
-          const botMessage = new Message(
-            'Bir hata oluştu. Lütfen tekrar deneyin.',
-            'bot'
-          );
-          this.messages.push(botMessage);
-        }
+        const botMessage = new Message(
+          res.generatedText || 'Bir hata oluştu. Lütfen tekrar deneyin.',
+          'bot'
+        );
+        this.messages.push(botMessage);
         this.loading = false;
       },
       (error) => {
-        // API isteği başarısız olursa hata mesajını göster
         console.error('API Hatası:', error);
         const botMessage = new Message(
           'Bir hata oluştu. Lütfen tekrar deneyin.',
@@ -66,13 +59,19 @@ export class ChatbotComponent {
         this.loading = false;
       }
     );
-    // Kullanıcı girişi sıfırla
+
+    // Giriş sıfırlama ve textarea boyutu resetleme
     this.userInput = '';
+    setTimeout(() => {
+      this.adjustTextareaHeight();
+      this.scrollToBottom(); // Mesaj gönderildikten sonra en alta kaydır
+    }, 0);
   }
+
   adjustTextareaHeight() {
     const textarea = this.autoTextarea.nativeElement as HTMLTextAreaElement;
-    textarea.style.height = 'auto'; // önce sıfırla
-    textarea.style.height = textarea.scrollHeight + 'px'; // sonra içeriğe göre büyüt
+    textarea.style.height = 'auto';
+    textarea.style.height = textarea.scrollHeight + 'px';
   }
 
   handleKeyDown(event: KeyboardEvent) {
@@ -80,5 +79,16 @@ export class ChatbotComponent {
       event.preventDefault();
       this.sendMessage();
     }
+  }
+
+  // Scroll işlemini gerçekleştiren fonksiyon
+  scrollToBottom() {
+    const messagesContainer = this.messagesContainer.nativeElement;
+    messagesContainer.scrollTop = messagesContainer.scrollHeight; // Burada container'ın scrollTop'unu en alta ayarlıyoruz
+  }
+
+  ngAfterViewChecked() {
+    // Her render sonrası en alt kaydırma kontrolü
+    this.scrollToBottom();
   }
 }

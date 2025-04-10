@@ -1,28 +1,8 @@
 <div class="container mx-auto mt-8 px-4 max-w-4xl dark:shadow-gray-800 mb-6">
-  <!-- Yükleniyor Mesajı -->
-  <div *ngIf="loading" class="text-center mb-6 animate-pulse">
-    <div
-      class="text-blue-600 dark:text-blue-400 font-semibold text-lg flex items-center justify-center space-x-2"
-    >
-      <svg
-        class="w-5 h-5 animate-spin"
-        fill="none"
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          class="opacity-75"
-          fill="currentColor"
-          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-        ></path>
-      </svg>
-      <span>Evren düşünüyor...</span>
-    </div>
-  </div>
-
   <!-- Mesajlar -->
   <div
-    class="messages overflow-y-auto max-h-[60vh] p-4 bg-gradient-to-br from-sky-50 to-blue-50 dark:from-gray-800 dark:to-gray-850 rounded-xl shadow-xl space-y-4 mb-6 border border-blue-100 dark:border-gray-700"
+    #messagesContainer
+    class="messages-container overflow-y-auto max-h-[60vh] p-4 bg-gradient-to-br from-sky-50 to-blue-50 dark:from-gray-800 dark:to-gray-850 rounded-xl shadow-xl space-y-4 mb-6 border border-blue-100 dark:border-gray-700"
   >
     <div
       *ngFor="let message of messages"
@@ -88,7 +68,27 @@
           {{ message.timestamp | date : "HH:mm" }}
         </div>
       </div>
+      <div #dynamicMessage></div>
     </div>
+    <!-- Yükleniyor Mesajı -->
+    <div *ngIf="loading" class="text-center mb-6 loader">
+      <div class="text-sky-600 dark:text-sky-400 font-semibold text-lg flex items-center justify-center space-x-2">
+        <svg
+          class="w-6 h-6 loader"
+          fill="none"
+          viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="opacity-75"
+            fill="currentColor"
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"
+          ></path>
+        </svg>
+        <span></span>
+      </div>
+    </div>
+    
   </div>
 
   <!-- Mesaj Gönderim Alanı -->
@@ -97,7 +97,7 @@
   >
     <!-- Textarea -->
     <textarea
-      #autoTextarea
+      autoTextarea
       [(ngModel)]="userInput"
       placeholder="Karadeliğe düşersem ne olur?"
       class="flex-1 px-4 py-3 bg-gray-50 dark:bg-gray-700 dark:text-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-gray-700 transition-all placeholder-gray-500 dark:placeholder-gray-400 resize-none overflow-hidden"
