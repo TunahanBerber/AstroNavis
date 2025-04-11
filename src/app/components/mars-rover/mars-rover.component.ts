@@ -20,32 +20,40 @@ export class MarsRoverComponent implements OnInit {
   ngOnInit(): void {
     this.fetchPhotos(); 
   }
+  private shuffleArray(array: MarsRover[]): MarsRover[] {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
 
  
   fetchPhotos(): void {
-    this.isLoading = true; // Fotoğraflar yükleniyor
+    this.isLoading = true;
     this.errorMessage = '';
   
-    // Yeni yöntemle subscribe kullanımı
     this.marsRoverService.getMarsPhotos().subscribe({
       next: (photos: MarsRover[]) => {
         if (photos.length > 0) {
-          this.photosByDate = photos; 
+          this.photosByDate = this.shuffleArray(photos); 
         } else {
-          this.errorMessage = 'Fotoğraf bulunamadı!'; 
+          this.errorMessage = 'Fotoğraf bulunamadı!';
         }
-        this.isLoading = false; // Yükleme tamamlandı
+        this.isLoading = false;
       },
       error: (error) => {
         this.isLoading = false;
         console.error('Hata oluştu:', error);
-        this.errorMessage = 'Fotoğraflar alınamadı!'; 
+        this.errorMessage = 'Fotoğraflar alınamadı!';
       },
       complete: () => {
         console.log('Fotoğraflar başarıyla alındı');
       }
     });
   }
+  
   
 
  
