@@ -9,10 +9,11 @@ import { MarsRoverComponent } from './components/mars-rover/mars-rover.component
 import { MillersPlanetComponent } from './components/millers-planet/millers-planet.component';
 import { ChatbotComponent } from "./components/chatbot/chatbot.component";
 import { SpaceQuotesComponent } from './components/space-quotes/space-quotes.component';
+import { InformationCardComponent } from './components/information-card/information-card.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent, BlackHoleComponent, FooterComponent, MarsRoverComponent, MillersPlanetComponent, ChatbotComponent,SpaceQuotesComponent],
+  imports: [RouterOutlet, NasaGalleryComponent, HeroSectionComponent, BlackHoleComponent, FooterComponent, MarsRoverComponent, MillersPlanetComponent, ChatbotComponent,SpaceQuotesComponent,InformationCardComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
