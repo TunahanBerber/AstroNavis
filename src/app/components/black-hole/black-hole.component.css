@@ -1,6 +1,8 @@
 /* Buton Stilleri */
 #black-hole-button {
   display: inline-block;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  font-size: 12px;
   width: 8rem;
   height: 8rem;
   background-color: black;
@@ -23,6 +25,7 @@
 #black-hole-button::before {
   content: ''; 
   position: absolute;
+  font-family: 'Orbitron', sans-serif;
   top: 0;
   left: 0;
   width: 100%;
