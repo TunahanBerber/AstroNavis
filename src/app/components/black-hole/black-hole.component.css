@@ -38,6 +38,11 @@
   transition: all 0.3s ease;
 }
 
+#black-hole-button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+
 #black-hole-button:hover {
   filter: blur(0);
 }
