@@ -1,12 +1,20 @@
 <div class="flex flex-wrap justify-center mt-4 md:mt-10 gap-4 md:gap-8 px-4 md:px-0">
     @for (card of informationCards; track card.title) {
       <div class="group h-80 w-full sm:h-96 sm:w-96 [perspective:1000px] p-2 sm:p-0">
-        <div class="relative h-full w-full rounded-xl shadow-xl transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+        <div class="relative h-full w-full rounded-xl shadow-md transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
           <!-- Ön yüz -->
           <div class="absolute inset-0">
-            <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40" 
-                 [src]="card.img" 
+            <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
+                 [src]="card.img"
                  [alt]="card.title">
+          
+            <!-- 360 İkonu -->
+            <div class="absolute top-2 left-2 bg-black/60 text-white rounded-full p-1 sm:p-2 flex items-center justify-center group-hover:scale-110 transition">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M4.5 12a7.5 7.5 0 1113.6 4.5M4.5 12l4.5 0m-4.5 0l3 3m0-6l-3 3" />
+              </svg>
+            </div>
           </div>
           <!-- Arka yüz -->
           <div class="absolute inset-0 h-full w-full rounded-xl bg-black/80 px-6 sm:px-12 text-center text-slate-200 [transform:rotateY(180deg)] [backface-visibility:hidden]">
