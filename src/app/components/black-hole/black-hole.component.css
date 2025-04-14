@@ -22,6 +22,8 @@
   word-break: break-word;
   -webkit-appearance: none;
   appearance: none;
+  -webkit-tap-highlight-color: transparent;
+
 }
 #black-hole-button:focus {
   outline: none;
@@ -42,7 +44,6 @@
   z-index: -1;
   transition: all 0.3s ease;
 }
-
 
 #black-hole-button:hover {
   filter: blur(0);
