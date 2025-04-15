@@ -2,13 +2,13 @@
     @for (card of informationCards; track card.title) {
       <div class="group h-80 w-full sm:h-96 sm:w-96 [perspective:1000px] p-2 sm:p-0">
         <div class="relative h-full w-full rounded-xl shadow-md transition-all duration-500 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
-          <!-- Ön yüz -->
+          <!--Kartın Ön yüz -->
           <div class="absolute inset-0">
             <img class="h-full w-full rounded-xl object-cover shadow-xl shadow-black/40"
                  [src]="card.img"
                  [alt]="card.title"
                  loading="lazy">
-            <!-- 360 İkonu -->
+            <!-- Dönme İkonu -->
             <div class="absolute top-2 left-2 bg-black/60 text-white rounded-full p-1 sm:p-2 flex items-center justify-center group-hover:scale-110 transition">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 sm:h-6 sm:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

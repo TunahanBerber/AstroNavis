@@ -23,5 +23,20 @@
     "title": "ISS – Yörüngedeki Bilim Üssü",
     "subtitle": "Uluslararası Uzay İstasyonu, Dünya’nın çevresinde dönen bir bilim üssüdür. Beş büyük uzay ajansının ortak yapımı olan ISS, mikro yerçekimi ortamında yürütülen deneylerle geleceğin uzay görevlerine ışık tutar. Astronotlar, her gün 16 kez Dünya’ya bakarken, insanlığın uzaydaki varlığına dair yeni sayfalar yazar.",
     "img": "https://upload.wikimedia.org/wikipedia/commons/c/c9/STS-134_International_Space_Station_after_undocking.jpg"
+  },
+  {
+    "title": "James Webb Uzay Teleskobu – Kozmosun Gözü",
+    "subtitle": "Evrenin doğumuna ışık tutan James Webb Uzay Teleskobu, milyarlarca yıl öncesinin ışığını bugüne taşıyor. Kızılötesi gözleriyle toz bulutlarının ardını görebiliyor, yeni yıldızların ve galaksilerin izini sürüyor. O, geçmişin aynası, geleceğin anahtarı.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/1/10/James_Webb_Primary_Mirror.jpg"
+  },
+  {
+    "title": "Andromeda Galaksisi – Komşu Dev",
+    "subtitle": "Bize en yakın büyük galaksi olan Andromeda, çıplak gözle görülebilecek kadar parlaktır. Ancak içinde trilyonlarca yıldız barındıran bu dev, milyarlarca yıl sonra Samanyolu ile çarpışacak. Kozmik bir dansın sessiz başrolüdür.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/9/98/Andromeda_Galaxy_%28with_h-alpha%29.jpg"
+  },
+  {
+    "title": "Oort Bulutu – Güneş Sistemi'nin Sınırında",
+    "subtitle": "Oort Bulutu, Güneş Sistemi’nin çok ötesinde, devasa bir küre gibi çevreyi saran, kuyruklu yıldızların kaynağı olan bir bölgedir. Henüz doğrudan gözlemlenemese de, oradan gelen misafirler bize evrenin uzak geçmişinden haber getirir.",
+    "img": "https://upload.wikimedia.org/wikipedia/commons/7/70/Kuiper_belt_-_Oort_cloud_numbered.svg"
   }
 ]
