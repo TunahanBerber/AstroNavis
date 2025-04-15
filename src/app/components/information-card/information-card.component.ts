@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import informationCard from '../../../assets/texts/information-card.json';
+import informationCard from '../../../assets/texts/tr/information-card.json';
 
 @Component({
   selector: 'app-information-card',
