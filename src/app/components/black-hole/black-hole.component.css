@@ -1,4 +1,4 @@
-/* Buton Stilleri */
+/* Astronavis Teması ile uyumlu karadelik */
 #black-hole-button {
   display: inline-block;
   font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
@@ -12,7 +12,7 @@
   border: 4px solid transparent;
   border-radius: 50%;
   position: relative;
-  filter: blur(4px) drop-shadow(2px -7px 20px #2196f3);
+  /* filter: blur(4px) drop-shadow(2px -7px 20px #2196f3); */
   transition: filter 0.3s ease, border-color 0.3s ease;
   padding: 0.5rem;
   display: flex;
@@ -25,6 +25,9 @@
   -webkit-tap-highlight-color: transparent;
 
 }
+
+
+
 #black-hole-button:focus {
   outline: none;
 }
@@ -37,8 +40,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border: 4px solid #5900f4;
-  border-top-color: #9c27b0;
+  /* border: 4px solid #5900f4; */
+  /* border-top-color: #9c27b0; */
   border-radius: 50%;
   animation: none;
   z-index: -1;
@@ -62,3 +65,25 @@
     transform: rotate(360deg);
   }
 }
+/* Messier 87 ile uyumlu karadelik */
+ #black-hole-button {
+  filter: blur(4px) drop-shadow(2px -7px 20px #ff6347);
+  transition: filter 0.3s ease, border-color 0.3s ease;
+}
+
+
+
+#black-hole-button::before {
+  border: 4px solid #ff6347;
+  border-top-color: #f7cf05;
+
+}
+
+
+
+
+
+
+
+
+

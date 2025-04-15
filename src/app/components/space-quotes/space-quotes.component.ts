@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import quotes from '../../../assets/texts/space-quotes.json';
+import quotes from '../../../assets/texts/tr/space-quotes.json';
 
 @Component({
   selector: 'app-space-quotes',
